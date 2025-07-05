@@ -1,0 +1,146 @@
+version: 2
+
+models:
+  - name: dim_payment_type
+    description: "Dim table for payment type"
+    columns:
+      - name: payment_type_id
+        description: "The primary key for payment_type table"
+        tests:
+          - unique
+          - not_null
+      - name: payment_type
+        description: "The payment type that was used for the trips"
+        tests:
+          - not_null
+
+  - name: dim_vendor
+    description: "Dim table for vendor"
+    columns:
+      - name: vendor_id
+        description: "The primary key for vendor table"
+        tests:
+          - unique
+          - not_null
+      - name: vendor_name
+        description: "The vendor that provided the trips"
+        tests:
+          - not_null
+
+  - name: dim_rate_code
+    description: "Dim table for rate code"
+    columns:
+      - name: rate_code
+        description: "The primary key for rate_code table"
+        tests:
+          - unique
+          - not_null
+      - name: rate_code_description
+        description: "The rate code that was used for the trips"
+        tests:
+          - not_null
+  - name: dim_store_and_forward
+    description: "Dim table for store and forward"
+    columns:
+      - name: transmission_id
+        description: "The primiary key for store_and_forward table"
+        tests:
+          - unique
+          - not_null
+      - name: transmission_flag
+        description: "The store and forward flag that was used for the trips"
+        tests:
+          - not_null
+  - name: dim_zone
+    description: "Dim table for zone"
+    columns:
+      - name: zone_id
+        description: "The primary key for zone table"
+        tests:
+          - unique
+          - not_null
+      - name: zone
+        description: "The zone that was used for the trips"
+        tests:
+          - not_null
+      - name: borough
+        description: "The borough that was used for the trips"
+        tests:
+          - not_null
+  - name: dim_date
+    description: "Dim table for date"
+    columns:
+      - name: date_id
+        description: "The primary key for date table"
+        tests:
+          - unique
+          - not_null
+  - name: fact_trips
+    description: "Fact table for trips"
+    columns:
+      - name: trip_id
+        description: "The primary key for fact table"
+        tests:
+          - unique
+          - not_null
+      - name: vendor_id
+        description: "The vendor_id that provided the trips"
+        tests:
+          - relationships:
+              to: ref('dim_vendor')
+              field: vendor_id
+      - name: rate_code
+        description: "The rate_code_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_rate_code')
+              field: rate_code
+      - name: transmission_id
+        description: "The transmission_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_store_and_forward')
+              field: transmission_id
+      - name: pickup_date_id
+        description: "The pickup_date_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_id
+      - name: dropoff_date_id
+        description: "The dropoff_date_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_id
+      - name: pickup_time_id
+        description: "The pickup_time_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_time')
+              field: time_id
+      - name: dropoff_time_id
+        description: "The dropoff_time_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_time')
+              field: time_id
+      - name: pickup_zone_id
+        description: "The pickup_zone_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_zone')
+              field: zone_id
+      - name: dropoff_zone_id
+        description: "The dropoff_zone_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_zone')
+              field: zone_id
+      - name: payment_type_id
+        description: "The payment_type_id that was used for the trips"
+        tests:
+          - relationships:
+              to: ref('dim_payment_type')
+              field: payment_type_id
+          

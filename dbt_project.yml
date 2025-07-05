@@ -1,0 +1,30 @@
+name: 'NYC_Taxi_Trips'
+version: '1.0.0'
+config-version: 2
+
+profile: 'NYC_Taxi_Trips'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  NYC_Taxi_Trips:
+    stage:
+      +schema: stage
+      +materialized: view
+    dim:
+      +schema: analytics
+      +materialized: table
+    fact:
+      +schema: analytics    
+      +materialized: table
+
+
