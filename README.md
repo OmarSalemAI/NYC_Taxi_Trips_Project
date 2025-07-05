@@ -20,7 +20,7 @@ This project demonstrates building a modern data warehouse using **AWS S3**, **S
 
 ## 🔁 Incremental Loading
 
-Some tables (such as `fact_trips`) are designed for **incremental loading** using `is_incremental()` in dbt. This ensures efficiency in data refresh and scalability.
+Some tables (such as `fact_trips`) are designed for **incremental loading** using `is_incremental()` in dbt. This ensures efficient, scalable data refresh.
 
 ---
 
@@ -36,7 +36,7 @@ Custom SQL-based tests written in the `tests/` folder, including:
 - Passenger count sanity checks (`passenger_count_check.sql`)
 
 ### 📄 Auto-generated Docs
-Full documentation generated using `dbt docs generate` and `dbt docs serve`.
+Documentation generated using `dbt docs generate` and `dbt docs serve`.
 
 ---
 
@@ -54,13 +54,13 @@ Business questions answered using dbt models in the `analyses/` folder:
 
 ## 📐 Data Model Diagram
 
-![Data Model Diagram](images/data_model.png)
+![Data Model Diagram](https://raw.githubusercontent.com/OmarSalemAI/NYC_Taxi_Trips_Project/main/Attached_files/star_schema_model.drawio.png)
 
 ---
 
 ## 🚀 Data Pipeline Architecture
 
-![Data Pipeline Architecture](images/data_pipeline.png)
+![Data Pipeline Architecture](https://raw.githubusercontent.com/OmarSalemAI/NYC_Taxi_Trips_Project/main/Attached_files/Data%20Pipeline%20Architecture.drawio.png)
 
 ---
 
@@ -81,4 +81,4 @@ NYC_Taxi_Trips_Project/
 ├── macros/              # Custom macros if needed
 ├── dbt_project.yml      # DBT configuration
 ├── README.md
-└── images/              # Diagrams used in README
+└── Attached_files/      # Pipeline & model diagrams
