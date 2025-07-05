@@ -16,6 +16,15 @@ This project demonstrates building a modern data warehouse using **AWS S3**, **S
   - **Staging Layer:** Cleaned and standardized schemas
   - **Analytics Layer:** Fact and Dimension tables for business use cases
 
+### 🧹 Data Preparation
+
+Before uploading the dataset to S3, initial data preprocessing was done in a **Jupyter Notebook**:
+- Merged trip data with location information using **pickup/dropoff latitude and longitude**
+- Mapped coordinates to **zones and boroughs** using NYC Taxi Zone Lookup data
+- Saved the enriched dataset as CSV for upload
+
+Notebook included in the repo under `Attached_files/`.
+
 ---
 
 ## 🔁 Incremental Loading
@@ -79,11 +88,6 @@ NYC_Taxi_Trips_Project/
 ├── seeds/               # Optional seed data
 ├── snapshots/           # (Not used but structured for future SCD)
 ├── macros/              # Custom macros if needed
+├── Attached_files/      # Pipeline & model diagrams, Jupyter preprocessing
 ├── dbt_project.yml      # DBT configuration
-├── README.md
-└── Attached_files/      # Pipeline & model diagrams
-
-📬 Contact
-Created by Omar Salem
-📧 omarsalem.ai.eng@gmail.com
-📍 Egypt
+└── README.md
