@@ -82,3 +82,8 @@ NYC_Taxi_Trips_Project/
 ├── dbt_project.yml      # DBT configuration
 ├── README.md
 └── Attached_files/      # Pipeline & model diagrams
+
+📬 Contact
+Created by Omar Salem
+📧 omarsalem.ai.eng@gmail.com
+📍 Egypt
